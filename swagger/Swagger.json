@@ -1,0 +1,171 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Currency_limit_saver",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Transactions"
+    }
+  ],
+  "paths": {
+    "/{account}/limit": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Add new limit",
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [
+          {
+            "name": "cat",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "product/service",
+            "example": "product"
+          },
+          {
+            "name": "sum",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "nothing or >=1000",
+            "example": "1500"
+          },
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Account that post a limit save",
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/expense": {
+      "post": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Add new transaction",
+        "requestBody": {
+          "content": {}
+        },
+        "parameters": [
+          {
+            "name": "from",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Who send",
+            "example": "1"
+          },
+          {
+            "name": "to",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Who get",
+            "example": "2"
+          },
+          {
+            "name": "cur",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Currency shortname",
+            "example": "RUB"
+          },
+          {
+            "name": "sum",
+            "in": "query",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Sum of transaction",
+            "example": "1500"
+          },
+          {
+            "name": "time",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Time of transaction",
+            "example": "2025-03-07T16:07:25"
+          },
+          {
+            "name": "cat",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Categorry of trasnaction",
+            "example": "product"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/{account}/": {
+      "get": {
+        "tags": [
+          "Transactions"
+        ],
+        "summary": "Get all exceeded limits",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Account that get a exceeded limits",
+            "example": "1"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet logicalFilePath="/db/changelog/insert-currency-pair-rate-first.xml"
+               id="2023-05-12-2-insert-books" author="s.m">
+        <insert tableName="PAIR_RATE">
+            <column  name="CURRENCY_PAIRS"  value="KZT/USD"/>
+            <column  name="RATE"  value="0.0020366708"/>
+            <column  name="DATETIME"  value="1741350000"/>
+        </insert>
+        <insert tableName="PAIR_RATE">
+            <column  name="CURRENCY_PAIRS"  value="RUB/USD"/>
+            <column  name="RATE"  value="0.01126157"/>
+            <column  name="DATETIME"  value="1741353120"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

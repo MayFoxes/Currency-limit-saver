@@ -1,0 +1,26 @@
+services:
+  currency-limit-service:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+    container_name: curr-limit-service
+    environment:
+      - MAIN_DB=jdbc:postgresql://postgres-db:5432/postgresdb
+      - MAIN_USER=postgresdb
+      - MAIN_PASSWORD=postgresdb
+    profiles:
+      - prod
+
+  postgres-db:
+    image: postgres:13.7-alpine
+    container_name: postgres-db
+    ports:
+      - "6464:5432"
+    environment:
+      - POSTGRES_DB=postgresdb
+      - POSTGRES_USER=postgresdb
+      - POSTGRES_PASSWORD=postgresdb
+    profiles:
+      - prod
